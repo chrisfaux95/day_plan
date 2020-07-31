@@ -37,24 +37,25 @@ function renderHours() {
         timeDiv.appendTo(timeTable);
 
 
-        currentTime = indexMoment.format("h:mmA");
+        indexTime = indexMoment.format("h:mm A");
         // Creates and appends the time label
-        let timeLabel = $("<div>").text(currentTime);
+        let timeLabel = $("<h5>").text(indexTime);
         timeLabel.addClass("col-2");
-        timeLabel.attr("data-time", currentTime);
+        timeLabel.attr("data-time", indexTime);
         // timeLabel.append($("<hr>"))
         timeDiv.append(timeLabel);
 
         // Creates Text Input Area
         let planInput = $("<textarea>");
         planInput.addClass("col-8");
-        planInput.attr("data-time", currentTime);
+        planInput.attr("data-time", indexTime);
+        planInput.attr("")
         timeDiv.append(planInput);
 
         //Creates Saving Button
         let planSaveBtn = $("<button>");
         planSaveBtn.addClass("btn btn-info col-1 mx-auto save-button");
-        planSaveBtn.attr("data-time", currentTime);
+        planSaveBtn.attr("data-time", indexTime);
         timeDiv.append(planSaveBtn);
 
         // Add save icon
