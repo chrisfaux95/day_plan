@@ -1,24 +1,31 @@
-var startTime = 9;
-var endTime = 17;
+//START CONDITONS (HOURS IN 24H TIME)
+var startTime = 8;
+var endTime = 20;
 var durationMinutes = 30;
 
+
+//Sets the header to include the current day
 function setCurrentDay() {
     var day = moment().format("dddd, MMMM Do");
     $("#current-day").text(day);
 }
 
+//creates the table for the planner
 function renderHours() {
-    let startMoment = moment({hour: startTime});
+    let currentMoment = moment({hour: startTime});
     let endMoment = moment({hour: endTime, minutes: 1});
     let duration = moment.duration(durationMinutes, "minute")
-    // console.log(startMoment);
+    //
     let timeTable = $("<table>");
     timeTable.appendTo($("main"));
-    while(startMoment < endMoment){
+    while(currentMoment < endMoment){
+        //create the row
         let timeDiv = $("<tr>");
-        timeDiv.append($("<td>").text(startMoment.format("h:mmA")));
+        //create and append the time at beginning of row
+        timeDiv.append($("<td>").text(currentMoment.format("h:mmA")));
         timeDiv.appendTo(timeTable);
-        startMoment.add(duration);
+        //increase time of 
+        currentMoment.add(duration);
     }
 };
 
