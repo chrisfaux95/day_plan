@@ -53,7 +53,7 @@ function renderHours() {
 
         //Creates Saving Button
         let planSaveBtn = $("<button>");
-        planSaveBtn.addClass("btn btn-info col-1 mx-auto");
+        planSaveBtn.addClass("btn btn-info col-1 mx-auto save-button");
         planSaveBtn.attr("data-time", currentTime);
         timeDiv.append(planSaveBtn);
 
