@@ -54,6 +54,9 @@ function renderHours() {
         planInput.attr("data-time", dataTime);
         timeDiv.append(planInput);
 
+
+        bgChangeTime(planInput,dataTime);
+
         //Creates Saving Button
         let planSaveBtn = $("<button>");
         planSaveBtn.addClass("btn btn-info col-1 mx-auto save-button");
@@ -67,6 +70,19 @@ function renderHours() {
 
         // Increment indexMoment
         indexMoment.add(duration);
+    }
+    function bgChangeTime(element, timeIndex){
+        let currentTimeNum = parseInt(currentTime.format("HHmm"));
+        let indexNum = parseInt(timeIndex);
+        if(currentTimeNum < indexNum) {
+            element.addClass("bg-secondary");
+        } else {
+            if(currentTimeNum < indexNum + durationMinutes){
+                element.addClass("bg-success");
+            } else {
+                element.addClass("bg-danger");
+            }
+        }
     }
 
     function savePlanner() {
