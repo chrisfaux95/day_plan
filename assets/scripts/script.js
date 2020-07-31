@@ -40,24 +40,24 @@ function renderHours() {
 
 
         indexTime = indexMoment.format("h:mm A");
+        dataTime = indexMoment.format("HHmm");
         // Creates and appends the time label
         let timeLabel = $("<h5>").text(indexTime);
         timeLabel.addClass("col-2");
-        timeLabel.attr("data-time", indexTime);
+        timeLabel.attr("data-time", dataTime);
         // timeLabel.append($("<hr>"))
         timeDiv.append(timeLabel);
 
         // Creates Text Input Area
         let planInput = $("<textarea>");
         planInput.addClass("col-8");
-        planInput.attr("data-time", indexTime);
-        planInput.attr("")
+        planInput.attr("data-time", dataTime);
         timeDiv.append(planInput);
 
         //Creates Saving Button
         let planSaveBtn = $("<button>");
         planSaveBtn.addClass("btn btn-info col-1 mx-auto save-button");
-        planSaveBtn.attr("data-time", indexTime);
+        planSaveBtn.attr("data-time", dataTime);
         timeDiv.append(planSaveBtn);
 
         // Add save icon
