@@ -69,6 +69,9 @@ function renderHours() {
     function savePlanner() {
 
     }
+
+
+    $(document).on("click", ".save-button", savePlanner);
 };
 
 setCurrentDay();
