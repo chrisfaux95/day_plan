@@ -2,6 +2,7 @@
 var startTime = 8;
 var endTime = 20;
 var durationMinutes = 30;
+var currentTime;
 
 
 // Sets the header to include the current day
@@ -27,6 +28,7 @@ function renderHours() {
     // Creates the table and appends it to main
     let timeTable = $("main");
 
+    updateTime();
     /* Loops until the current moment
     is greater than the endMoment,
     creating the table rows and filling them */
@@ -74,6 +76,10 @@ function renderHours() {
 
     $(document).on("click", ".save-button", savePlanner);
 };
+
+function updateTime(){
+    currentTime = moment();
+}
 
 setCurrentDay();
 renderHours();
