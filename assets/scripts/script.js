@@ -65,6 +65,10 @@ function renderHours() {
         // Increment indexMoment
         indexMoment.add(duration);
     }
+
+    function savePlanner() {
+
+    }
 };
 
 setCurrentDay();
