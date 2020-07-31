@@ -20,8 +20,8 @@ function renderHours() {
     endMoment has a value of 1 minute
     to include the last time slot */
 
-    let currentMoment = moment({hour: startTime});
-    let endMoment = moment({hour: endTime, minutes: 1});
+    let currentMoment = moment({hour: startTime, minutes: 0, seconds: 0});
+    let endMoment = moment({hour: endTime, minutes: 1, seconds: 0});
     let duration = moment.duration(durationMinutes, "minute")
 
     // Creates the table and appends it to main
