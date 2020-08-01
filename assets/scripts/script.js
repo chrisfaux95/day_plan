@@ -85,8 +85,19 @@ function renderHours() {
         }
     }
 
-    function savePlanner() {
 
+    function savePlanner() {
+    // Makes a local
+    var saveText = {};
+    $("textarea").each(function(){
+
+        let inputText = $(this).val();
+        
+        let inputData = $(this).attr("data-time");
+        
+        saveText[inputData] = inputText;
+    })
+    localStorage.setItem("planner", JSON.stringify(saveText));
     }
 
 
