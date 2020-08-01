@@ -72,6 +72,9 @@ function renderHours() {
         // Increment indexMoment
         indexMoment.add(duration);
     }
+
+};
+
     function bgChangeTime(element, timeIndex) {
         let currentTimeNum = parseInt(currentTime.format("HHmm"));
         let indexNum = parseInt(timeIndex);
@@ -85,8 +88,6 @@ function renderHours() {
             }
         }
     }
-};
-
 
 function savePlanner() {
     // Makes a local
