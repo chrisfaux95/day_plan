@@ -4,7 +4,6 @@ var endTime = 20;
 var durationMinutes = 30;
 var currentTime;
 
-
 // Sets the header to include the current day
 function setCurrentDay() {
     var day = moment().format("dddd, MMMM Do");
@@ -20,7 +19,6 @@ function renderHours() {
     
     endMoment has a value of 1 minute
     to include the last time slot */
-
     let indexMoment = moment({ hour: startTime, minutes: 0, seconds: 0 });
     let endMoment = moment({ hour: endTime, minutes: 1, seconds: 0 });
     let duration = moment.duration(durationMinutes, "minute")
@@ -41,6 +39,7 @@ function renderHours() {
 
         indexTime = indexMoment.format("h:mm A");
         dataTime = indexMoment.format("HHmm");
+
         // Creates and appends the time label
         let timeLabel = $("<h5>").text(indexTime);
         timeLabel.addClass("col-2");
@@ -54,8 +53,7 @@ function renderHours() {
         planInput.attr("data-time", dataTime);
         timeDiv.append(planInput);
 
-
-        bgChangeTime(planInput,dataTime);
+        bgChangeTime(planInput, dataTime);
 
         //Creates Saving Button
         let planSaveBtn = $("<button>");
@@ -71,44 +69,45 @@ function renderHours() {
         // Increment indexMoment
         indexMoment.add(duration);
     }
-    function bgChangeTime(element, timeIndex){
+    function bgChangeTime(element, timeIndex) {
         let currentTimeNum = parseInt(currentTime.format("HHmm"));
         let indexNum = parseInt(timeIndex);
-        if(currentTimeNum < indexNum) {
+        if (currentTimeNum < indexNum) {
             element.addClass("bg-secondary");
         } else {
-            if(currentTimeNum < indexNum + durationMinutes){
+            if (currentTimeNum < indexNum + durationMinutes) {
                 element.addClass("bg-success");
             } else {
                 element.addClass("bg-danger");
             }
         }
     }
+};
 
 
-    function savePlanner() {
+function savePlanner() {
     // Makes a local
     var saveText = {};
-    $("textarea").each(function(){
+    $("textarea").each(function () {
 
         let inputText = $(this).val();
-        
+
         let inputData = $(this).attr("data-time");
-        
+
         saveText[inputData] = inputText;
     })
     localStorage.setItem("planner", JSON.stringify(saveText));
-    }
+}
 
-function getPlanner(){
+function getPlanner() {
     var savedText = JSON.parse(localStorage.getItem("planner"));
-    $("textarea").each(function(){
+    $("textarea").each(function () {
         $(this).val(savedText[$(this).attr("data-time")]);
     })
 }
 
 
-function updateTime(){
+function updateTime() {
     currentTime = moment();
 }
 
