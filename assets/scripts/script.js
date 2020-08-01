@@ -100,6 +100,12 @@ function renderHours() {
     localStorage.setItem("planner", JSON.stringify(saveText));
     }
 
+function getPlanner(){
+    var savedText = JSON.parse(localStorage.getItem("planner"));
+    $("textarea").each(function(){
+        $(this).val(savedText[$(this).attr("data-time")]);
+    })
+}
 
 
 function updateTime(){
@@ -111,3 +117,4 @@ $(document).on("click", ".save-button", savePlanner);
 
 setCurrentDay();
 renderHours();
+getPlanner();
