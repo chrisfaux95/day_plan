@@ -101,12 +101,13 @@ function renderHours() {
     }
 
 
-    $(document).on("click", ".save-button", savePlanner);
-};
 
 function updateTime(){
     currentTime = moment();
 }
+
+$(document).on("click", ".save-button", savePlanner);
+
 
 setCurrentDay();
 renderHours();
