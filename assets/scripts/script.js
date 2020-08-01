@@ -1,8 +1,11 @@
 //START CONDITONS (HOURS IN 24H TIME)
 var startTime = 8;
 var endTime = 20;
+//Duration between time slots in minutes
 var durationMinutes = 30;
+//Blank Variable for current time (from moment.js)
 var currentTime;
+
 
 // Sets the header to include the current day
 function setCurrentDay() {
@@ -11,7 +14,7 @@ function setCurrentDay() {
 }
 
 
-// Creates the table for the planner
+// Creates the planner body
 function renderHours() {
 
     /* Set the values for the index time,
@@ -87,6 +90,19 @@ function renderHours() {
 
 function savePlanner() {
     // Makes a local
+    var saveText = {};
+    $("textarea").each(function () {
+
+        let inputText = $(this).val();
+
+        let inputData = $(this).attr("data-time");
+
+        saveText[inputData] = inputText;
+    })
+    localStorage.setItem("planner", JSON.stringify(saveText));
+}
+
+function savePlannerAll(){
     var saveText = {};
     $("textarea").each(function () {
 
