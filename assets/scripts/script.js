@@ -90,13 +90,11 @@ function renderHours() {
 
 function savePlanner() {
     // Makes a local
-    var saveText = {};
-    $("textarea").each(function () {
-
+    var saveText = JSON.parse(localStorage.getItem("planner"));
+    let attrStr = "textarea[data-time='" + $(this).attr("data-time") +"']"
+    $(attrStr).each(function () {
         let inputText = $(this).val();
-
         let inputData = $(this).attr("data-time");
-
         saveText[inputData] = inputText;
     })
     localStorage.setItem("planner", JSON.stringify(saveText));
