@@ -94,13 +94,9 @@ function bgChangeTime(element, timeIndex) {
 function savePlanner() {
     // Makes a local
     let saveText = JSON.parse(localStorage.getItem(storageIndex));
-
-    let attrStr = "textarea[data-time='" + $(this).attr("data-time") + "']"
-    $(attrStr).each(function () {
-        let inputText = $(this).val();
-        let inputData = $(this).attr("data-time");
-        saveText[inputData] = inputText;
-    })
+    let dataTime = $(this).attr("data-time")
+    let attrStr = "textarea[data-time='" + dataTime + "']"
+    saveText[dataTime] = $(attrStr).val();
     localStorage.setItem(storageIndex, JSON.stringify(saveText));
 }
 
