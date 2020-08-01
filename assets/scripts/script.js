@@ -83,7 +83,7 @@ function bgChangeTime(element, timeIndex) {
     if (currentTimeNum < indexNum) {
         element.addClass("bg-secondary");
     } else {
-        if (currentTimeNum < indexNum + durationMinutes) {
+        if (currentTimeNum <= indexNum + durationMinutes) {
             element.addClass("bg-success");
         } else {
             element.addClass("bg-danger");
