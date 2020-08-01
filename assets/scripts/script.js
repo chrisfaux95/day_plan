@@ -2,7 +2,7 @@
 var startTime = 8;
 var endTime = 20;
 // Duration between time slots in minutes
-var durationMinutes = 45;
+var durationMinutes = 30;
 // Blank Variable for current time (from moment.js)
 var currentTime;
 // Variable for easy change and reference of local storage key
