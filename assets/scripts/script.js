@@ -101,7 +101,7 @@ function savePlanner() {
     localStorage.setItem("planner", JSON.stringify(saveText));
 }
 
-function savePlannerAll(){
+function savePlannerAll() {
     var saveText = {};
     $("textarea").each(function () {
 
