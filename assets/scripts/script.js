@@ -2,9 +2,11 @@
 var startTime = 8;
 var endTime = 20;
 //Duration between time slots in minutes
-var durationMinutes = 30;
+var durationMinutes = 60;
 //Blank Variable for current time (from moment.js)
 var currentTime;
+//Variable for easy change of local storage key
+var storageIndex = "planner";
 
 
 // Sets the header to include the current day
@@ -75,34 +77,35 @@ function renderHours() {
 
 };
 
-    function bgChangeTime(element, timeIndex) {
-        let currentTimeNum = parseInt(currentTime.format("HHmm"));
-        let indexNum = parseInt(timeIndex);
-        if (currentTimeNum < indexNum) {
-            element.addClass("bg-secondary");
+function bgChangeTime(element, timeIndex) {
+    let currentTimeNum = parseInt(currentTime.format("HHmm"));
+    let indexNum = parseInt(timeIndex);
+    if (currentTimeNum < indexNum) {
+        element.addClass("bg-secondary");
+    } else {
+        if (currentTimeNum < indexNum + durationMinutes) {
+            element.addClass("bg-success");
         } else {
-            if (currentTimeNum < indexNum + durationMinutes) {
-                element.addClass("bg-success");
-            } else {
-                element.addClass("bg-danger");
-            }
+            element.addClass("bg-danger");
         }
     }
+}
 
 function savePlanner() {
     // Makes a local
-    var saveText = JSON.parse(localStorage.getItem("planner"));
-    let attrStr = "textarea[data-time='" + $(this).attr("data-time") +"']"
+    let saveText = JSON.parse(localStorage.getItem(storageIndex));
+
+    let attrStr = "textarea[data-time='" + $(this).attr("data-time") + "']"
     $(attrStr).each(function () {
         let inputText = $(this).val();
         let inputData = $(this).attr("data-time");
         saveText[inputData] = inputText;
     })
-    localStorage.setItem("planner", JSON.stringify(saveText));
+    localStorage.setItem(storageIndex, JSON.stringify(saveText));
 }
 
 function savePlannerAll() {
-    var saveText = {};
+    let saveText = {};
     $("textarea").each(function () {
 
         let inputText = $(this).val();
@@ -111,11 +114,11 @@ function savePlannerAll() {
 
         saveText[inputData] = inputText;
     })
-    localStorage.setItem("planner", JSON.stringify(saveText));
+    localStorage.setItem(storageIndex, JSON.stringify(saveText));
 }
 
 function getPlanner() {
-    var savedText = JSON.parse(localStorage.getItem("planner"));
+    let savedText = JSON.parse(localStorage.getItem(storageIndex));
     $("textarea").each(function () {
         $(this).val(savedText[$(this).attr("data-time")]);
     })
