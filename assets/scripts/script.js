@@ -126,7 +126,7 @@ function updateTime() {
 }
 
 $(document).on("click", ".save-button", savePlanner);
-
+$("#save-all").on("click", savePlannerAll);
 
 setCurrentDay();
 renderHours();
