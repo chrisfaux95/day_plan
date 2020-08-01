@@ -95,7 +95,7 @@ function bgChangeTime(element, timeIndex) {
         element.addClass("bg-secondary");
     } else {
         //otherwise
-        if (currentTimeNum <= indexNum + durationMinutes) {
+        if (currentTimeNum < indexNum + durationMinutes) {
             /* If the current time is within the duration,
                make the background green */
             element.addClass("bg-success");
