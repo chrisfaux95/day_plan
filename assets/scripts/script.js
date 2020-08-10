@@ -144,16 +144,24 @@ function savePlannerAll() {
     localStorage.setItem(storageIndex, JSON.stringify(saveText));
 }
 
-/* Function to retrieve the stored planner from localStorage */ 
+/* Function to retrieve the stored planner from localStorage */
 function getPlanner() {
     // Gets object from local storage
-    let savedText = JSON.parse(localStorage.getItem(storageIndex));
-    // Loops through all of the text areas
-    $("textarea").each(function () {
-        /* Sets value of the textarea to be equal
-           to the retrieved text from the object */
-        $(this).val(savedText[$(this).attr("data-time")]);
-    })
+    let storedText = localStorage.getItem(storageIndex);
+    // Check if there actually is something stored
+    if (storedText != null) {
+        //Parse the stored object
+        let savedText = JSON.parse(storedText);
+        // Loops through all of the text areas
+        $("textarea").each(function () {
+            /* Sets value of the textarea to be equal
+               to the retrieved text from the object */
+            $(this).val(savedText[$(this).attr("data-time")]);
+
+        })
+    }
+
+
 }
 
 /* Simple function to update the time */
