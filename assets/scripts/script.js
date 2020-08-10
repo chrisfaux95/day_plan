@@ -114,6 +114,11 @@ local storage */
 function savePlanner() {
     // Gets the saved object from local storage
     let saveText = JSON.parse(localStorage.getItem(storageIndex));
+
+    if (saveText === null) {
+        saveText = {}
+    }
+
     // Gets the data-time from the currently pressed button
     let dataTime = $(this).attr("data-time")
     // Specifies a string to find the textarea with the same data-time
